@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 # Load the XGBoost model
 model = xgb.XGBClassifier()
-model.load_model(r"C:\Users\SANTHOSH\Videos\clean\xgboost_model.json")
+model.load_model("../training/xgboost_model.json")
+
 
 @app.route('/')
 def home():
