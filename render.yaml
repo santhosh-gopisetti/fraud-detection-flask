@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: fraud-detection-app
+    env: python
+    buildCommand: ""
+    startCommand: python flask/app.py

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Transaction Result - FraudGuard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="overlay text-center">
+                {% if "Fraudulent" in prediction_text %}
+                    <i class="fas fa-exclamation-triangle header-icon text-danger"></i>
+                    <h2 class="mb-4">Fraud Alert!</h2>
+                    <div class="prediction-result prediction-fraud">
+                        {{ prediction_text }}
+                    </div>
+                    <p class="lead mt-4">This transaction has been flagged as potentially fraudulent. Please review the details carefully.</p>
+                {% else %}
+                    <i class="fas fa-check-circle header-icon text-success"></i>
+                    <h2 class="mb-4">Transaction Verified</h2>
+                    <div class="prediction-result prediction-legitimate">
+                        {{ prediction_text }}
+                    </div>
+                    <p class="lead mt-4">This transaction appears to be legitimate and safe to proceed.</p>
+                {% endif %}
+                
+                <div class="mt-5">
+                    <a href="/predict" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-search me-2"></i>Check Another Transaction
+                    </a>
+                    <a href="/" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-home me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

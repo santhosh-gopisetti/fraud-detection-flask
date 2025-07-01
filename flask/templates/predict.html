@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Check Transaction - FraudGuard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="overlay">
+                <div class="text-center mb-4">
+                    <i class="fas fa-search header-icon"></i>
+                    <h2 class="mb-3">Transaction Analysis</h2>
+                    <p class="lead">Enter the transaction details below for fraud detection</p>
+                </div>
+
+                <form action="/submit" method="post" class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-clock me-2"></i>Step
+                            </label>
+                            <input type="number" name="step" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-exchange-alt me-2"></i>Transaction Type
+                            </label>
+                            <select name="type" class="form-control" required>
+                                <option value="1">PAYMENT</option>
+                                <option value="2">TRANSFER</option>
+                                <option value="3">CASH_OUT</option>
+                                <option value="4">DEBIT</option>
+                                <option value="5">CASH_IN</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-dollar-sign me-2"></i>Amount
+                            </label>
+                            <input type="number" name="amount" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-wallet me-2"></i>Old Balance Origin
+                            </label>
+                            <input type="number" name="oldbalanceOrg" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-wallet me-2"></i>New Balance Origin
+                            </label>
+                            <input type="number" name="newbalanceOrig" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-wallet me-2"></i>Old Balance Destination
+                            </label>
+                            <input type="number" name="oldbalanceDest" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <label class="form-label">
+                                <i class="fas fa-wallet me-2"></i>New Balance Destination
+                            </label>
+                            <input type="number" name="newbalanceDest" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-shield-alt me-2"></i>Analyze Transaction
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
