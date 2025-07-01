@@ -9,7 +9,8 @@ app = Flask(__name__)
 
 # Load the XGBoost model
 model = xgb.XGBClassifier()
-model.load_model("../training/xgboost_model.json")
+model.load_model("xgboost_model.json")
+
 
 
 @app.route('/')
@@ -48,6 +49,10 @@ def submit():
 
     return render_template("predict.html", prediction_text="Please submit the form.")
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
 
